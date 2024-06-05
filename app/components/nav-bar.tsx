@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
+import { useMediaQuery } from 'react-responsive';
 import { Logo } from "./logo";
 import Link from "next/link";
 import {
@@ -70,6 +71,8 @@ function useMenuAnimation(isOpen: boolean) {
 
 export default function NavBar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const isMdScreen = useMediaQuery({ minWidth: 768 });
+
   useEffect(() => {
     if (isMenuOpen) {
       document.body.classList.add("no-scroll");
@@ -80,6 +83,12 @@ export default function NavBar() {
       document.body.classList.remove("no-scroll");
     };
   }, [isMenuOpen]);
+
+  useEffect(() => {
+    if (isMdScreen) {
+      setIsMenuOpen(false);
+    }
+  }, [isMdScreen]);
 
   const scope = useMenuAnimation(isMenuOpen);
 
@@ -108,7 +117,7 @@ export default function NavBar() {
   ];
 
   return (
-    <nav ref={scope} className="fixed w-full items-center justify-center bordeer-b border-yellow-800 shadow-xl backdrop-blur-md">
+    <nav ref={scope} className="fixed w-full items-center justify-center shadow-xl backdrop-blur-md">
       <div
         className={`flex items-center justify-between max-w-screen-2xl h-16 ${
           isMenuOpen ? "bg-secondary" : "bg-inherit"
