@@ -33,3 +33,11 @@
 
   --ring: 240 5.9% 60%;
 }
+
+.no-scroll {
+  overflow: hidden;
+}
+
+.display-height {
+  height: calc(100vh - 4rem);
+}

@@ -9,9 +9,9 @@ const Path = (props: any) => (
   />
 );
 
-export const MenuToggle = ({ toggle }: any) => (
-  <button onClick={toggle}>
-    <svg width="23" height="18" viewBox="0 0 23 18">
+export const MenuToggle = ({ toggle, className }: { toggle: any, className: string }) => (
+  <button onClick={toggle} className={className} >
+    <svg width="20" height="16" viewBox="0 0 23 18">
       <Path
         d="M 2 2.5 L 20 2.5"
         className="top bg-zinc-950"
